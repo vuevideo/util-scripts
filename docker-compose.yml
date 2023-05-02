@@ -1,0 +1,24 @@
+version: '3'
+services:
+  vuevideo_postgres:
+    image: postgres
+    container_name: vuevideo_postgres
+    restart: always
+    ports:
+      - '127.0.0.1:8888:5432'
+      - '5432:5432'
+    env_file:
+      - postgres.env
+    volumes:
+      - vuevideo_postgres:/var/lib/postgresql/data
+    networks:
+      - vuevideo_net
+
+networks:
+  vuevideo_net:
+    name: vuevideo_net
+
+volumes:
+  vuevideo_postgres:
+    driver: local
+
