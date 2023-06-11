@@ -16,7 +16,7 @@ jobs:
       - id: image_name
         name: Form proper Docker Image Name
         run: |
-          DOCKER_IMAGE="${{ vars.DOCKER_REGISTRY }}/${{ vars.DOCKER_NAMESPACE }}/firebase_setup:latest"
+          DOCKER_IMAGE="${{ vars.DOCKER_REGISTRY }}/${{ vars.DOCKER_NAMESPACE }}/firebase_reset:latest"
 
           echo "DOCKER_IMAGE=$DOCKER_IMAGE" >> $GITHUB_OUTPUT
 
