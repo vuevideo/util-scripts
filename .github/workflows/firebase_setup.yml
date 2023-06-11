@@ -6,6 +6,9 @@ on:
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: firebase_setup
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
