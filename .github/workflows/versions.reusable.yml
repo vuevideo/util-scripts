@@ -1,0 +1,35 @@
+name: Handle versions of both Client and Server Workflow
+
+on:
+  workflow_call:
+    inputs:
+      trigger:
+        default: client
+        description: Which repository is triggering this pipeline
+        required: true
+        type: string
+
+      version:
+        description: Version to record for deployment
+        required: true
+        type: string
+
+jobs:
+  client_version:
+    if: ${{ inputs.trigger == 'client' }}
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.VERSIONS_TOKEN }}
+      CLIENT_VERSION: ${{ inputs.version }}
+    steps:
+      - run: gh variable set CLIENT_VERSION --body "$CLIENT_VERSION" --org vuevideo --visibility all
+
+  server_version:
+    if: ${{ inputs.trigger == 'server' }}
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.VERSIONS_TOKEN }}
+      SERVER_VERSION: ${{ inputs.version }}
+    steps:
+      - run: gh variable set SERVER_VERSION --body "$SERVER_VERSION" --org vuevideo --visibility all
+
