@@ -14,6 +14,11 @@ on:
         required: true
         type: string
 
+    secrets:
+      VERSIONS_TOKEN:
+        description: GitHub token for versioning
+        required: true
+
 jobs:
   client_version:
     if: ${{ inputs.trigger == 'client' }}
