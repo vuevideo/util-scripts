@@ -2,6 +2,8 @@ name: Push Firebase Setup Docker Image
 
 on:
   push:
+    paths:
+      - firebase_setup/**
 
 jobs:
   build_and_push:

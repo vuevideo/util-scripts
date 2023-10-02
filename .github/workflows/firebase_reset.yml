@@ -2,6 +2,8 @@ name: Push Firebase Reset Docker Image
 
 on:
   push:
+    paths:
+      - firebase_reset/**
 
 jobs:
   build_and_push:
